@@ -178,7 +178,6 @@ With the `.env` variables set up(see .evv.example for referance), you can now ru
 2. **Example Tests:**
    - **`FullFlowTest.sol`**: Simulates the entire cross-chain liquidation protection flow.
    - **`MonitorTest.sol`**: Verifies the `MonitorCompoundV2` logic (checking shortfall, sending CCIP requests).
-   - **`CompoundBasicTest.sol`**: Focuses on the core Compound mechanics like mint, borrow, and repay.
    - **`LPSCTestWithSimulator.sol`**: Tests the CCIP interaction between Ethereum and Arbitrum using a local simulator.
 
 ---
@@ -187,7 +186,7 @@ With the `.env` variables set up(see .evv.example for referance), you can now ru
 
 For more detailed logs during test execution, increase the verbosity with `-vvvv`:
 ```bash
-forge test --fork-url $ETH_RPC_URL --fork-url $ARBITRUM_RPC_URL -vvvv
+forge test  -vvvv
 ```
 
 This outputs additional details like transaction traces and state changes, making it easier to debug complex flows.
