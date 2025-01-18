@@ -166,7 +166,7 @@ Before running the tests, ensure you set up the required RPC URLs for Ethereum M
 
 ### 5.2 Running Local Fork Tests
 
-With the `.env` variables set up(see .evv.example for referance), you can now run the test suite. These tests use the RPC URLs to create Ethereum and Arbitrum forks locally.
+With the `.env` variables set up, you can now run the test suite. These tests use the RPC URLs to create Ethereum and Arbitrum forks locally.
 
  
 
