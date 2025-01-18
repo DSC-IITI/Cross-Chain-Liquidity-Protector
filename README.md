@@ -23,10 +23,6 @@ The **CCIP Liquidation Protector** is a cross-chain solution designed to protect
     - [5.2 Running Local Fork Tests](#52-running-local-fork-tests)
     - [5.3 Debugging and Logs](#53-debugging-and-logs)
     - [5.4 Example Commands](#54-example-commands)
-  - [6. Usage and Examples](#6-usage-and-examples)
-  - [7. Security and Considerations](#7-security-and-considerations)
-  - [8. License](#8-license)
-    - [**Happy Building!**](#happy-building)
 
 ---
 
@@ -214,48 +210,3 @@ This outputs additional details like transaction traces and state changes, makin
 
 
 
-## 6. Usage and Examples
-
-1. **Deploying LPSC** on Arbitrum:
-   - You can deploy it directly with your router address (Chainlink CCIP) and a reference to an Aave pool to manage liquidity.
-
-2. **Deploying MonitorCompoundV2** on Ethereum:
-   - Point it to the Compound Comptroller and the relevant cToken addresses.  
-   - Provide your user’s address so it knows who to protect.
-
-3. **Configuring LPSCRegistry**:
-   - Map any tokens you expect to handle cross-chain. For example, if your token is “ETHx” on mainnet and “ETHx” on Arbitrum, store that in the registry so LPSC can do lookups.
-
-4. **Performing a Mock Liquidation Check**:
-   - Use the `MonitorCompoundV2.checkUpkeep()` function to see if your user is in shortfall. If yes, it calls `performUpkeep()` to send a CCIP message.
-
----
-
-## 7. Security and Considerations
-
-1. **Access Control**  
-   - `onlyRouterOrOwner` in `LPSC` ensures only the Chainlink CCIP router or the contract owner can trigger certain functions.  
-   - Ensure you consider additional role-based restrictions if needed (e.g., pausing functionality).
-
-2. **Token Approvals**  
-   - `MonitorCompoundV2` and `LPSC` both approve the CCIP router to spend tokens. This is essential for bridging but should be carefully managed.  
-   - Confirm that no arbitrary addresses get infinite approvals.
-
-3. **Reentrancy and Upgrades**  
-   - Consider adding reentrancy guards if your project expands.  
-   - For production, you might use upgradeable contracts; ensure that your cross-chain logic is upgrade-safe.
-
-4. **Testing on Real Networks**  
-   - The local simulator is great for rapid iteration. However, always run tests on testnets (Goerli, Arbitrum Goerli, etc.) if possible, to ensure your CCIP flows and addresses are configured correctly.
-
----
-
-## 8. License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute this code. If you make improvements, consider submitting a pull request to help the community!
-
----
-
-### **Happy Building!**
-
-If you have any questions or issues, please open an issue in the [GitHub repository](https://github.com/smartcontractkit/ccip-liquidation-protector) or reach out to the Chainlink community on [Discord](https://discord.gg/chainlink).  
